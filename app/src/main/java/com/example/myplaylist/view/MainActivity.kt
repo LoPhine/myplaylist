@@ -7,7 +7,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatDialogFragment
 import com.example.myplaylist.R
 
-class MainActivity : AppCompatActivity(), ItemClickListener {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,11 +23,5 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
     }
 
 
-
-    override fun onButtonClick(nameMusic: String) {
-        val intent: Intent(this@MainActivity, PlaylistActivity::class.java)
-        val b = Bundle()
-        b.putString('musicName')
-    }
 }
 
