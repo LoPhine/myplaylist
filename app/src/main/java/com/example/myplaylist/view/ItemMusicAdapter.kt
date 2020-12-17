@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myplaylist.R
 import com.example.myplaylist.entities.ItemMusic
 
-class ItemMusicAdapter: RecyclerView.Adapter<ItemMusicAdapter.MusicItemViewHolder>(){
+class ItemMusicAdapter(
+    private val listener: ItemClickListener
+): RecyclerView.Adapter<ItemMusicAdapter.MusicItemViewHolder>(){
     var data = listOf<ItemMusic>()
             set(value){
                 field = value
@@ -27,7 +29,14 @@ class ItemMusicAdapter: RecyclerView.Adapter<ItemMusicAdapter.MusicItemViewHolde
             musicItem.text = music
             singerItem.text = singer
             albumItem.setImageResource(album)
+
+            albumItem.setOnClickListener{
+                listener.onImageClick(music)
+            }
         }
+
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicItemViewHolder {
